@@ -7,7 +7,7 @@ var app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 express.static("public");
 
-var user_base_schema = new mongoose.Schema({
+var user_base_schema = new mongoose.Schema({ // declare mongodb schema 
 	unique_id: String,
 	alone: Boolean,
 	room: String,
@@ -16,7 +16,7 @@ var user_base_schema = new mongoose.Schema({
 var user_base = mongoose.model("user_bases", user_base_schema);
 
 mongoose.connect(
-	"mongodb+srv://wimpywarlord:warlord123@cluster0.0m95r.mongodb.net/<dbname>?retryWrites=true&w=majority",
+	"mongodb+srv://kartikbanga:19BCI0231@iwpproject.7ptd3.mongodb.net/Data?authSource=admin&replicaSet=atlas-isz5o7-shard-0&readPreference=primary&appname=MongoDB%20Compass&ssl=true",
 	{ dbName: "viit" },
 	function (err, res) {
 		if (err) {
@@ -28,11 +28,11 @@ mongoose.connect(
 	}
 );
 
-app.get("/", function (req, res) {
+app.get("/", function (req, res) { // render index.js on homepage
 	res.render("index.ejs");
 });
 
-app.post("/party", async function (req, res) {
+app.post("/party", async function (req, res) { // post request to database
 	var sort = { _id: 1 };
 	var list_of_all_user;
 	console.log("FETCHING STARTED.");
@@ -72,7 +72,6 @@ app.post("/party", async function (req, res) {
 	}
 	console.log("END OF BEST ROOM");
 
-	// <--CODE FOR FINDING THE BEST ROOM-->
 
 	if (best_free_room) {
 		// console.log("THE BEST USESR IS", best_free_room);
@@ -119,9 +118,12 @@ app.post("/party", async function (req, res) {
 				room: room_for_current_user,
 			},
 			{
-				upsert: true,
+				upsert: true, // updating database
 			}
 		);
+
+//If the value of upsert option is set to true and the document or documents found that match the specified query, then the update operation will 
+//update the matched document or documents
 
 		console.log("ENDING CREATE NEW USER");
 		res.redirect(`https://meet.jit.si/${room_for_current_user}`);
@@ -146,7 +148,7 @@ async function updateDb(filter, update, upsert) {
 			filter,
 			update,
 			{
-				upsert: upsert,
+				upsert: upsert, // for updating database
 			},
 			function (err, res) {
 				if (err) {
