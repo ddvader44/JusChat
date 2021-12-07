@@ -1,5 +1,5 @@
 {
-	"name": "Amigos",
+	"name": "JusChat",
 	"version": "1.0.0",
 	"description": "",
 	"main": "app.js",
@@ -19,18 +19,18 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/wimpywarlord/HelloFrands.git"
+		"url": "git+https://github.com/ddvader44/JusChat.git"
 	},
 	"keywords": [
-		"kshitij",
-		"dhyani",
+		"dishit",
+		"duggar",
 		"vit",
-		"wimmpywarlrod"
+		"ddvader44"
 	],
-	"author": "kshitij dhyani",
+	"author": "dishit duggar",
 	"license": "ISC",
 	"bugs": {
-		"url": "https://github.com/wimpywarlord/HelloFrands/issues"
+		"url": "https://github.com/ddvader44/JusChat/issues"
 	},
-	"homepage": "https://github.com/wimpywarlord/HelloFrands#readme"
+	"homepage": "https://github.com/ddvader44/JusChat"
 }
